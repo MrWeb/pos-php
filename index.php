@@ -15,14 +15,14 @@ $subtotal = new item('Subtotal', '12.95');
 $tax      = new item('A local tax', '1.30');
 $total    = new item('Total', '14.25', true);
 /* Date is kept the same for testing */
-// $date = date('l jS \of F Y h:i:s A');
-$date = "Monday 6th of April 2015 02:56:25 PM";
+$date = date('l jS \of F Y h:i:s A');
+// $date = "Monday 6th of April 2015 02:56:25 PM";
 /* Start the printer */
-$logo    = EscposImage::load("resources/escpos-php.png", false);
+/*$logo    = EscposImage::load("resources/escpos-php.png", false);
 $printer = new Printer($connector);
 /* Print top logo */
-$printer->setJustification(Printer::JUSTIFY_CENTER);
-$printer->graphics($logo);
+/*$printer->setJustification(Printer::JUSTIFY_CENTER);
+$printer->graphics($logo);*/
 /* Name of shop */
 $printer->selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
 $printer->text("ExampleMart Ltd.\n");
