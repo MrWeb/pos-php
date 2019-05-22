@@ -101,7 +101,7 @@ try {
     /* Close printer */
     $printer->close();
 } catch (Exception $e) {
-    echo "Impossibilestampare, errore:" . $e->getMessage() . "\n";
+    echo "Impossibile stampare, errore:" . $e->getMessage() . "\n";
 }
 
 class item
