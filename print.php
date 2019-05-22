@@ -1,15 +1,20 @@
 <?php
 require __DIR__ . '/vendor/mike42/escpos-php/autoload.php';
+use Mike42\Escpos\EscposImage;
 use Mike42\Escpos\PrintConnectors\NetworkPrintConnector;
 use Mike42\Escpos\Printer;
 
 try {
     $data = $_GET;
-    // exit($data['usr_internal_code']);
+    // exit($data['note']);
 
     $connector = new NetworkPrintConnector("172.20.10.2", 9100);
+    $printer   = new Printer($connector);
 
-    $printer = new Printer($connector);
+    $logo = EscposImage::load("logo.png", false);
+    /* Print top logo */
+    $printer->setJustification(Printer::JUSTIFY_CENTER);
+    $printer->graphics($logo);
 
     /* Ricevuta n e data */
     $printer->setEmphasis(true);
@@ -65,7 +70,7 @@ try {
     }
 
     $printer->text("Commenti/Note\n");
-    $printer->text("(nessuna nota)\n");
+    $printer->text(($data['note'] != "") ? $data['note'] . "\n" : "(nessuna nota)\n");
     $printer->text("----------------------\n");
     $printer->feed();
 
