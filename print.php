@@ -4,9 +4,10 @@ use Mike42\Escpos\PrintConnectors\NetworkPrintConnector;
 use Mike42\Escpos\Printer;
 
 try {
-    $connector = new NetworkPrintConnector("172.20.10.2", 9100);
-
     $data = $_GET;
+    // exit($data['usr_internal_code']);
+
+    $connector = new NetworkPrintConnector("172.20.10.2", 9100);
 
     $printer = new Printer($connector);
 
@@ -72,7 +73,7 @@ try {
     $printer->text($data['branch_address'] . "\n");
     $printer->text($data['branch_zip'] . "-" . $data['branch_city'] . "(" . $data['branch_district'] . ")\n");
     $printer->text("P . IVA:" . $data['branch_PIVA'] . "-CF:" . $data['branch_CF'] . "\n");
-    $printer->text("----------------------\n");
+    $printer->text("Agente: " . $data['usr_internal_code'] . "\n");
     $printer->feed();
 
     $printer->cut();
