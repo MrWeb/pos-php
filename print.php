@@ -11,7 +11,7 @@ function valuta($price)
 
 try {
     $data = $_GET;
-    exit(valuta($data['prod_price']));
+    //exit(valuta($data['prod_price']));
 
     $connector = new NetworkPrintConnector("172.20.10.2", 9100);
     $printer   = new Printer($connector);
