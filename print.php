@@ -20,15 +20,16 @@ try {
     //$logo = EscposImage::load("logo.png", false);
     /* Print top logo */
     $printer->setJustification(Printer::JUSTIFY_CENTER);
+    $printer->setEmphasis(true);
+    $printer->text("WWW.CASHOUT.CREDIT\n");
     // $printer->graphics($logo);
-    // $printer->feed();
+    $printer->feed();
 
     /* Ricevuta n e data */
     $printer->setEmphasis(true);
     $printer->text("RICEVUTA #" . $data['number'] . "\n");
     $printer->text("Data: " . date('d/m/Y', strtotime($data['created_at'])) . "\n");
     $printer->setEmphasis(false);
-    $printer->text("Stampata: " . date('d/m/Y H:i:s') . "\n");
     $printer->feed();
 
     /* Ordine e transazione */
@@ -92,6 +93,7 @@ try {
     $printer->text($data['branch_zip'] . "-" . $data['branch_city'] . " (" . $data['branch_district'] . ")\n");
     $printer->text("P.IVA:" . $data['branch_PIVA'] . "\nCF:" . $data['branch_CF'] . "\n");
     $printer->text("Agente: " . $data['usr_internal_code'] . "\n");
+    $printer->text("Stampa " . date('d/m/Y H:i:s'));
     $printer->feed();
 
     $printer->cut();
