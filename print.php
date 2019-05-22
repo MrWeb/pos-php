@@ -15,6 +15,7 @@ try {
     /* Print top logo */
     $printer->setJustification(Printer::JUSTIFY_CENTER);
     $printer->graphics($logo);
+    $printer->feed();
 
     /* Ricevuta n e data */
     $printer->setEmphasis(true);
