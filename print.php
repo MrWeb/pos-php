@@ -59,7 +59,7 @@ try {
     $printer->setEmphasis(false);
     $printer->feed();
 
-    $printer->text("Questa transazione: ");
+    $printer->text("Questa transazione:\n");
     $printer->setEmphasis(true);
     $printer->text(valuta($data['tr_price']) . " Eur.\n(" . $data['tr_status_word'] . ")\n");
     $printer->setEmphasis(false);
