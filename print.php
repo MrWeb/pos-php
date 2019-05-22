@@ -13,7 +13,7 @@ try {
 
     /* Ricevuta n e data */
     $printer->setEmphasis(true);
-    $printer->text("RECEVUTA #" . $data['number'] . "\n");
+    $printer->text("RICEVUTA #" . $data['number'] . "\n");
     $printer->text("Data: " . date('d/m/Y', strtotime($data['created_at'])) . "\n");
     $printer->setEmphasis(false);
     $printer->feed();
