@@ -18,7 +18,7 @@ try {
     $connector = new NetworkPrintConnector("172.20.10.2", 9100);
     $printer   = new Printer($connector);
 
-    $logo = EscposImage::load("logo.bmp", false);
+    $logo = EscposImage::load("logo.png", false);
     /* Print top logo */
     $printer->feed();
     // $printer->setJustification(Printer::JUSTIFY_CENTER);
