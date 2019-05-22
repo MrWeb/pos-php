@@ -6,9 +6,9 @@ use Mike42\Escpos\Printer;
 try {
     //$connector = new NetworkPrintConnector("172.20.10.2", 9100);
 
-    $ricevuta = $_GET['invoice'];
+    // $ricevuta = $_GET['n'];
 
-    echo $ricevuta;
+    var_dump($_GET);
 
     // $printer = new Printer($connector);
 
