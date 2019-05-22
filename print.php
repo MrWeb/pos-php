@@ -1,6 +1,5 @@
 <?php
 require __DIR__ . '/vendor/mike42/escpos-php/autoload.php';
-use Mike42\Escpos\EscposImage;
 use Mike42\Escpos\PrintConnectors\NetworkPrintConnector;
 use Mike42\Escpos\Printer;
 
@@ -18,11 +17,11 @@ try {
     $connector = new NetworkPrintConnector("172.20.10.2", 9100);
     $printer   = new Printer($connector);
 
-    $logo = EscposImage::load("logo.png", false);
+    //$logo = EscposImage::load("logo.png", false);
     /* Print top logo */
     $printer->setJustification(Printer::JUSTIFY_CENTER);
-    $printer->graphics($logo);
-    $printer->feed();
+    // $printer->graphics($logo);
+    // $printer->feed();
 
     /* Ricevuta n e data */
     $printer->setEmphasis(true);
