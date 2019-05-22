@@ -4,14 +4,23 @@ use Mike42\Escpos\PrintConnectors\NetworkPrintConnector;
 use Mike42\Escpos\Printer;
 
 try {
-    $connector = new NetworkPrintConnector("172.20.10.2", 9100);
+    //$connector = new NetworkPrintConnector("172.20.10.2", 9100);
 
-    $printer = new Printer($connector);
-    $printer->text("Hello Mimllenials!!\n");
-    $printer->cut();
+    $ricevuta = $_GET['ricevuta'];
 
-    /* Close printer */
-    $printer->close();
+    echo $ricevuta['numero'];
+
+    // $printer = new Printer($connector);
+
+    // $printer->setEmphasis(true);
+    // $printer->text("RECEVUTA #${d}\n");
+    // $printer->setEmphasis(false);
+
+    // $printer->text("Hello Mimllenials!!\n");
+    // $printer->cut();
+
+    // /* Close printer */
+    // $printer->close();
 } catch (Exception $e) {
     echo "Impossibile stampare, errore: " . $e->getMessage() . "\n";
 }
