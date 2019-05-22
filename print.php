@@ -22,7 +22,12 @@ try {
     $printer->feed();
     $printer->setJustification(Printer::JUSTIFY_CENTER);
     $printer->setEmphasis(true);
-    $printer->text("WWW.CASHOUT.CREDIT\n");
+    $printer->text(" ██████╗ █████╗ ███████╗██╗  ██╗ ██████╗ ██╗   ██╗████████╗\n");
+    $printer->text("██╔════╝██╔══██╗██╔════╝██║  ██║██╔═══██╗██║   ██║╚══██╔══╝\n");
+    $printer->text("██║     ███████║███████╗███████║██║   ██║██║   ██║   ██║   \n");
+    $printer->text("██║     ██╔══██║╚════██║██╔══██║██║   ██║██║   ██║   ██║   \n");
+    $printer->text("╚██████╗██║  ██║███████║██║  ██║╚██████╔╝╚██████╔╝   ██║   \n");
+    $printer->text(" ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝    ╚═╝   \n");
     // $printer->graphics($logo);
     $printer->feed();
 
@@ -103,7 +108,7 @@ try {
     /* Close printer */
     $printer->close();
 
-    header('location: https://www.cashout.credit/orders/' . $data['id']);
+    header('location: https://www.cashout.credit/orders/' . $data['order_id']);
 } catch (Exception $e) {
     echo "Impossibile stampare, errore:" . $e->getMessage() . "\n";
 }
