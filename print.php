@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/vendor/mike42/escpos-php/autoload.php';
+use Mike42\Escpos\EscposImage;
 use Mike42\Escpos\PrintConnectors\NetworkPrintConnector;
 use Mike42\Escpos\Printer;
 
@@ -17,18 +18,18 @@ try {
     $connector = new NetworkPrintConnector("172.20.10.2", 9100);
     $printer   = new Printer($connector);
 
-    //$logo = EscposImage::load("logo.png", false);
+    $logo = EscposImage::load("logo.bmp", false);
     /* Print top logo */
     $printer->feed();
-    $printer->setJustification(Printer::JUSTIFY_CENTER);
-    $printer->setEmphasis(true);
-    $printer->text(" ██████╗ █████╗ ███████╗██╗  ██╗ ██████╗ ██╗   ██╗████████╗\n");
-    $printer->text("██╔════╝██╔══██╗██╔════╝██║  ██║██╔═══██╗██║   ██║╚══██╔══╝\n");
-    $printer->text("██║     ███████║███████╗███████║██║   ██║██║   ██║   ██║   \n");
-    $printer->text("██║     ██╔══██║╚════██║██╔══██║██║   ██║██║   ██║   ██║   \n");
-    $printer->text("╚██████╗██║  ██║███████║██║  ██║╚██████╔╝╚██████╔╝   ██║   \n");
-    $printer->text(" ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝    ╚═╝   \n");
-    // $printer->graphics($logo);
+    // $printer->setJustification(Printer::JUSTIFY_CENTER);
+    // $printer->setEmphasis(true);
+    // $printer->text(" ██████╗ █████╗ ███████╗██╗  ██╗ ██████╗ ██╗   ██╗████████╗\n");
+    // $printer->text("██╔════╝██╔══██╗██╔════╝██║  ██║██╔═══██╗██║   ██║╚══██╔══╝\n");
+    // $printer->text("██║     ███████║███████╗███████║██║   ██║██║   ██║   ██║   \n");
+    // $printer->text("██║     ██╔══██║╚════██║██╔══██║██║   ██║██║   ██║   ██║   \n");
+    // $printer->text("╚██████╗██║  ██║███████║██║  ██║╚██████╔╝╚██████╔╝   ██║   \n");
+    // $printer->text(" ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝    ╚═╝   \n");
+    $printer->graphics($logo);
     $printer->feed();
 
     /* Ricevuta n e data */
@@ -108,7 +109,7 @@ try {
     /* Close printer */
     $printer->close();
 
-    header('location: https://www.cashout.credit/orders/' . $data['order_id']);
+    header('location: https://www.cashout.credit/orders/' . $data['order_id'] . '/edit');
 } catch (Exception $e) {
     echo "Impossibile stampare, errore:" . $e->getMessage() . "\n";
 }
