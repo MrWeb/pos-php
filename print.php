@@ -34,7 +34,9 @@ try {
     $printer->text("----------------------\n");
     $printer->feed();
 
-    $printer->text(new Item($data['prod_description'], $data['prod_price'], true));
+    $printer->setEmphasis(true);
+    $printer->text(new Item($data['prod_description'] . " di Eur. " . $data['prod_price']));
+    $printer->setEmphasis(false);
     $printer->feed();
 
     $printer->text("Questa transazione: ");
@@ -52,19 +54,18 @@ try {
     if ($data['tr_payment'] == 'check') {
         $printer->text("Banca: ");
         $printer->setEmphasis(true);
-        $printer->text($data['tr_bank'] . "\n\n");
+        $printer->text($data['tr_bank'] . "\n");
         $printer->setEmphasis(false);
 
         $printer->text("Numero Assegno: ");
         $printer->setEmphasis(true);
-        $printer->text($data['tr_check_number'] . "\n");
+        $printer->text($data['tr_check_number'] . "\n\n");
         $printer->setEmphasis(false);
     }
 
     $printer->text("Commenti/Note\n");
     $printer->text("(nessuna nota)\n");
     $printer->text("----------------------\n");
-    $printer->feed();
     $printer->feed();
 
     $printer->setEmphasis(true);
