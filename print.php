@@ -21,7 +21,7 @@ try {
     /* Print top logo */
     $printer->feed();
     $printer->setJustification(Printer::JUSTIFY_CENTER);
-    $printer->setTextSize(3, 6);
+    $printer->setTextSize(2, 3);
     $printer->setEmphasis(true);
     $printer->text("Cashout\n");
     $printer->setEmphasis(false);
@@ -60,7 +60,8 @@ try {
     $printer->feed();
 
     $printer->setEmphasis(true);
-    $printer->text(new Item($data['prod_description'] . " di Eur. " . valuta($data['prod_price'])));
+    $cut_transazione = str_replace("#", "\n#", $data['prod_description']);
+    $printer->text(new Item($cut_transazione . " di Eur. " . valuta($data['prod_price'])));
     $printer->setEmphasis(false);
     $printer->feed();
 
