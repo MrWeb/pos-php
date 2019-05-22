@@ -21,9 +21,9 @@ try {
     /* Print top logo */
     $printer->feed();
     $printer->setJustification(Printer::JUSTIFY_CENTER);
-    $printer->setTextSize(2, 4);
+    $printer->setTextSize(3, 6);
     $printer->setEmphasis(true);
-    $printer->text("CASHOUT\n");
+    $printer->text("Cashout\n");
     $printer->setEmphasis(false);
     // $printer->text(" ██████╗ █████╗ ███████╗██╗  ██╗ ██████╗ ██╗   ██╗████████╗\n");
     // $printer->text("██╔════╝██╔══██╗██╔════╝██║  ██║██╔═══██╗██║   ██║╚══██╔══╝\n");
