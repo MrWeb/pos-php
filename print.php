@@ -4,6 +4,8 @@ use Mike42\Escpos\EscposImage;
 use Mike42\Escpos\PrintConnectors\NetworkPrintConnector;
 use Mike42\Escpos\Printer;
 
+date_default_timezone_set('Europe/Rome');
+
 function valuta($price)
 {
     return number_format((float) $price, 2, '.', '');
