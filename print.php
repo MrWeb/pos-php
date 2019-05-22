@@ -19,6 +19,7 @@ try {
 
     //$logo = EscposImage::load("logo.png", false);
     /* Print top logo */
+    $printer->feed();
     $printer->setJustification(Printer::JUSTIFY_CENTER);
     $printer->setEmphasis(true);
     $printer->text("WWW.CASHOUT.CREDIT\n");
@@ -94,11 +95,15 @@ try {
     $printer->text("Agente: " . $data['usr_internal_code'] . "\n");
     $printer->text("Stampa " . date('d/m/Y H:i:s'));
     $printer->feed();
+    $printer->feed();
+    $printer->feed();
 
     $printer->cut();
 
     /* Close printer */
     $printer->close();
+
+    header('location: https://www.cashout.credit/orders/' . $data['id']);
 } catch (Exception $e) {
     echo "Impossibile stampare, errore:" . $e->getMessage() . "\n";
 }
