@@ -4,9 +4,14 @@ use Mike42\Escpos\EscposImage;
 use Mike42\Escpos\PrintConnectors\NetworkPrintConnector;
 use Mike42\Escpos\Printer;
 
+function valuta($price)
+{
+    return number_format((float) $price, 2, '.', '');
+}
+
 try {
     $data = $_GET;
-    // exit($data['note']);
+    exit(valuta($data['prod_price']));
 
     $connector = new NetworkPrintConnector("172.20.10.2", 9100);
     $printer   = new Printer($connector);
@@ -30,6 +35,8 @@ try {
     $printer->text("Transazione #" . $data['tr_number'] . "\n");
     $printer->feed();
 
+    $printer->setJustification(Printer::JUSTIFY_LEFT);
+
     /* Destinatario */
     $printer->text("Destinatario:\n");
     $printer->setEmphasis(true);
@@ -42,13 +49,13 @@ try {
     $printer->feed();
 
     $printer->setEmphasis(true);
-    $printer->text(new Item($data['prod_description'] . " di Eur. " . $data['prod_price']));
+    $printer->text(new Item($data['prod_description'] . " di Eur. " . valuta($data['prod_price'])));
     $printer->setEmphasis(false);
     $printer->feed();
 
     $printer->text("Questa transazione: ");
     $printer->setEmphasis(true);
-    $printer->text($data['tr_price'] . " Eur.\n(" . $data['tr_status_word'] . ")\n");
+    $printer->text(valuta($data['tr_price']) . " Eur.\n(" . $data['tr_status_word'] . ")\n");
     $printer->setEmphasis(false);
     $printer->feed();
 
@@ -74,6 +81,8 @@ try {
     $printer->text(($data['note'] != "") ? $data['note'] . "\n" : "(nessuna nota)\n");
     $printer->text("----------------------\n");
     $printer->feed();
+
+    $printer->setJustification(Printer::JUSTIFY_CENTER);
 
     $printer->setEmphasis(true);
     $printer->text($data['branch_name'] . "\n");
