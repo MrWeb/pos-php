@@ -46,7 +46,7 @@ try {
     $printer->setEmphasis(false);
     $printer->text($data['address'] . "\n");
     $printer->text($data['zip'] . " - " . $data['city'] . " (" . $data['district'] . ")\n");
-    $printer->text("P.IVA: " . $data['PIVA'] . "\nCF: " . $data['CF'] . "\n");
+    $printer->text("P.IVA: " . $data['PIVA'] . "\nCF: " . $data['CF'] . "\n\n");
     $printer->text("----------------------\n");
     $printer->feed();
 
@@ -80,7 +80,7 @@ try {
     }
 
     $printer->text("Commenti/Note\n");
-    $printer->text(($data['note'] != "") ? $data['note'] . "\n" : "(nessuna nota)\n");
+    $printer->text(($data['note'] != "") ? $data['note'] . "\n\n" : "(nessuna nota)\n\n");
     $printer->text("----------------------\n");
     $printer->feed();
 
