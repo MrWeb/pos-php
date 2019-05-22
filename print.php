@@ -25,15 +25,9 @@ try {
     $printer->setEmphasis(true);
     $printer->text("Cashout\n");
     $printer->setEmphasis(false);
-    // $printer->text(" ██████╗ █████╗ ███████╗██╗  ██╗ ██████╗ ██╗   ██╗████████╗\n");
-    // $printer->text("██╔════╝██╔══██╗██╔════╝██║  ██║██╔═══██╗██║   ██║╚══██╔══╝\n");
-    // $printer->text("██║     ███████║███████╗███████║██║   ██║██║   ██║   ██║   \n");
-    // $printer->text("██║     ██╔══██║╚════██║██╔══██║██║   ██║██║   ██║   ██║   \n");
-    // $printer->text("╚██████╗██║  ██║███████║██║  ██║╚██████╔╝╚██████╔╝   ██║   \n");
-    // $printer->text(" ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝    ╚═╝   \n");
-    // $printer->graphics($logo);
-    $printer->feed();
     $printer->setTextSize(1, 1);
+    $printer->text("www.cashout.credit\n");
+    $printer->feed();
 
     /* Ricevuta n e data */
     $printer->text("RICEVUTA #" . $data['number'] . "\n");
