@@ -16,6 +16,7 @@ try {
     $printer->text("RICEVUTA #" . $data['number'] . "\n");
     $printer->text("Data: " . date('d/m/Y', strtotime($data['created_at'])) . "\n");
     $printer->setEmphasis(false);
+    $printer->text("Stampata: " . date('d/m/Y H:i:s') . "\n");
     $printer->feed();
 
     /* Ordine e transazione */
