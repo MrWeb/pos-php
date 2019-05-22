@@ -30,20 +30,20 @@ try {
     $printer->setEmphasis(false);
     $printer->text($data['address'] . "\n");
     $printer->text($data['zip'] . " - " . $data['city'] . " (" . $data['district'] . ")\n");
-    $printer->text("P.IVA: " . $data['PIVA'] . " - CF: " . $data['CF'] . "\n");
+    $printer->text("P.IVA: " . $data['PIVA'] . "\nCF: " . $data['CF'] . "\n");
     $printer->text("----------------------\n");
     $printer->feed();
 
-    $printer->text(new Item($data['prod_name'] . "\n" . $data['prod_description'], $data['prod_price'], true));
+    $printer->text(new Item($data['prod_description'], $data['prod_price'], true));
     $printer->feed();
 
     $printer->text("Questa transazione: ");
     $printer->setEmphasis(true);
-    $printer->text($data['tr_price'] . " (" . $data['tr_status_word'] . ")\n");
+    $printer->text($data['tr_price'] . " Eur.\n(" . $data['tr_status_word'] . ")\n");
     $printer->setEmphasis(false);
     $printer->feed();
 
-    $printer->text("Pagamento effettuato tramite: ");
+    $printer->text("Pagamento effettuato tramite:\n");
     $printer->setEmphasis(true);
     $printer->text($data['tr_payment_word'] . "\n");
     $printer->setEmphasis(false);
@@ -62,7 +62,7 @@ try {
     }
 
     $printer->text("Commenti/Note\n");
-    $printer->text("(nessuna nota)");
+    $printer->text("(nessuna nota)\n");
     $printer->text("----------------------\n");
     $printer->feed();
     $printer->feed();
@@ -71,8 +71,8 @@ try {
     $printer->text($data['branch_name'] . "\n");
     $printer->setEmphasis(false);
     $printer->text($data['branch_address'] . "\n");
-    $printer->text($data['branch_zip'] . "-" . $data['branch_city'] . "(" . $data['branch_district'] . ")\n");
-    $printer->text("P . IVA:" . $data['branch_PIVA'] . "-CF:" . $data['branch_CF'] . "\n");
+    $printer->text($data['branch_zip'] . "-" . $data['branch_city'] . " (" . $data['branch_district'] . ")\n");
+    $printer->text("P.IVA:" . $data['branch_PIVA'] . "\nCF:" . $data['branch_CF'] . "\n");
     $printer->text("Agente: " . $data['usr_internal_code'] . "\n");
     $printer->feed();
 
@@ -105,7 +105,7 @@ class item
         }
         $left = str_pad($this->name, $leftCols);
 
-        $sign  = ($this->moneySign ? ' €' : '');
+        $sign  = ($this->moneySign ? ' Eur' : '');
         $right = str_pad($this->price . $sign, $rightCols, ' ', STR_PAD_LEFT);
         return "$left$right\n";
     }
